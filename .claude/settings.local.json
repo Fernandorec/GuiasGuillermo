@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m 'Usar rutas relativas para CSS y enlaces \\(arregla estilos y 404 en GitHub Pages\\) *)",
+      "Bash(git push *)"
+    ]
+  }
+}
