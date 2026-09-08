@@ -1,0 +1,30 @@
+.contenedor {
+  font-size: 20px;
+}
+
+.titulo {
+  color: white;
+  text-decoration: underline;
+}
+
+.parrafo-intro {
+  font-weight: bold;
+  color: navy;
+}
+
+.parrafo-uso {
+  text-align: justify;
+  text-transform: uppercase;
+}
+
+.parrafo-nota {
+  font-size: 12px;
+}
+
+.destacado {
+  font-style: italic;
+}
+
+body {
+  background-color: lightblue;
+}
