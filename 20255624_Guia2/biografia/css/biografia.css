@@ -1,0 +1,252 @@
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Instrument+Serif:ital@0;1&display=swap");
+
+:root {
+  --Lista_color: #cdc5b6;
+}
+
+body {
+  background-color: #14130f;
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.Banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px clamp(20px, 5vw, 64px);
+  backdrop-filter: blur(10px);
+}
+
+.Nombre {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: #a29a8b;
+}
+
+.Lista {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 30px);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.Lista_opcion {
+  color: var(--Lista_color);
+}
+
+.Lista_opcion:hover {
+  color: white;
+}
+
+.Portada {
+  position: relative;
+  height: 100vh;
+  min-height: 520px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Portada_imagen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.Portada_imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(15%, -20%) scale(1.5);
+}
+
+.Portada_degradado {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* Aqui tuve ayuda de ChatGPT ya que no supe como hacer el difuminado */
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 19, 15, 0.55) 0%,
+    rgba(20, 19, 15, 0.25) 40%,
+    rgba(20, 19, 15, 0.92) 100%
+  );
+}
+
+.Portada_contenido {
+  position: absolute;
+
+  /* Chatgpt me ayudo con esto para el texto */
+  left: clamp(20px, 5vw, 64px);
+  right: clamp(20px, 5vw, 64px);
+  bottom: clamp(48px, 9vh, 110px);
+}
+
+.Portada_titulo {
+  margin: 0;
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+
+  /* Gpt me ayudo con esto del clamp */
+  font-size: clamp(50px, 15vw, 150px);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--Lista_color);
+}
+
+.Portada_descripcion {
+  margin: 22px 0 0;
+  max-width: 46ch;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--Lista_color);
+  text-wrap: pretty;
+}
+
+.Sobre_mi {
+  padding: clamp(80px, 14vh, 170px) clamp(20px, 5vw, 64px);
+  max-width: 1240px;
+  margin: 0 auto;
+  scroll-margin-top: 60px;
+}
+
+.Sobre_mi_contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(32px, 6vw, 90px);
+  align-items: start;
+}
+
+.etiqueta {
+  margin: 0 0 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  color: var(--Lista_color);
+}
+
+.Sobre_mi_titulo {
+  margin: 0 0 28px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-size: clamp(32px, 4.4vw, 58px);
+  line-height: 1.08;
+  text-wrap: balance;
+  color: wheat;
+}
+
+.Sobre_mi_parrafo {
+  color: white;
+  line-height: 1.75;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: clamp(16px, 2.2vw, 20px);
+}
+
+.Sobre_mi_contenedor_imagen {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.Sobre_mi_imagen {
+  width: 100%;
+  height: clamp(260px, 64vh, 420px);
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.Estudios {
+  padding: clamp(60px, 10vh, 130px) clamp(20px, 5vw, 64px);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.Estudios_contenedor {
+  border-top: 1px solid;
+  border-color: #2a2721;
+  padding-top: 32px;
+}
+
+.Estudios_etiqueta {
+  margin: 0 0 40px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #79736a;
+}
+
+.Estudios_lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.Estudios_item {
+  display: grid;
+  grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
+  gap: clamp(16px, 4vw, 48px);
+  padding: 26px 0;
+  border-bottom: 1px solid #2a2721;
+}
+
+.Estudios_anio {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--Lista_color);
+  font-size: 13px;
+}
+
+.Estudios_titulo {
+  margin: 0 0 6px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.Estudios_lugar {
+  margin: 0 0 8px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  color: #9b9486;
+}
+
+.Estudios_nota {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #c6bfb2;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+footer {
+  border-top: 1px solid #2a2721;
+  justify-content: center;
+  padding: 36px clamp(20px, 5vw, 64px) 56px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #79736a;
+}
