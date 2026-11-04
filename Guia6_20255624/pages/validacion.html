@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/stylesFunciones.css" rel="stylesheet" />
+    <link rel="icon" href="../img/js.png" sizes="32x32" type="image/png" />
+    <title>Expresiones regulares</title>
+</head>
+
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-dark fixed-top">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="../indexFunciones.html"
+                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="../img/js.png" alt="" width="32" height="32" class="me-2" />
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-bar">
+                        <li class="text-center">
+                            <a href="recursividad.html" class="nav-link text-white">
+                                <i class="bi bi-arrow-clockwise bi-2 d-block"></i>
+                                Recursividad
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="tabla.html" class="nav-link text-white">
+                                <i class="bi bi-table bi-2 d-block"></i>
+                                Creando una Tabla
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="formulario.html" class="nav-link text-white">
+                                <i class="bi bi-ui-checks bi-2 d-block"></i>
+                                Formulario
+                            </a>
+                        </li>
+                        <li class="text-center nav-bar-li-active">
+                            <a href="validacion.html" class="nav-link text-white">
+                                <i class="bi bi-shield-check bi-2 d-block"></i>
+                                Validación
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-lg">
+        <div class="row">
+
+            <div class="col-12 shadow-lg p-3 mt-5 bg-body rounded">
+                <h3>Ficha de estudiante</h3>
+                <p class="text-muted">Cada campo se valida con una expresión regular mientras se escribe.</p>
+                <form id="idFormEstudiante" novalidate>
+                    <div class="row g-3">
+                        <div class="col-lg-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idCarnet" placeholder="Carnet"
+                                    maxlength="8" autocomplete="off" />
+                                <label for="idCarnet"><i class="bi bi-person-badge"></i> Carnet</label>
+                                <div class="invalid-feedback">Dos letras y tres números. Ej: AB001</div>
+                                <div class="valid-feedback">Carnet válido</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idNombreCompleto"
+                                    placeholder="Nombre completo" autocomplete="off" />
+                                <label for="idNombreCompleto"><i class="bi bi-person-circle"></i> Nombre completo</label>
+                                <div class="invalid-feedback">Solo letras y espacios (mínimo nombre y apellido), sin
+                                    números ni caracteres especiales.</div>
+                                <div class="valid-feedback">Nombre válido</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idDui" placeholder="DUI" maxlength="10"
+                                    autocomplete="off" />
+                                <label for="idDui"><i class="bi bi-card-text"></i> DUI</label>
+                                <div class="invalid-feedback">Formato: ########-# &nbsp;Ej: 01234567-8</div>
+                                <div class="valid-feedback">DUI válido</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idNit" placeholder="NIT" maxlength="17"
+                                    autocomplete="off" />
+                                <label for="idNit"><i class="bi bi-card-heading"></i> NIT</label>
+                                <div class="invalid-feedback">Formato: ####-######-###-#  Ej: 0614-010190-101-3
+                                </div>
+                                <div class="valid-feedback">NIT válido</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idFechaNacimiento"
+                                    placeholder="Fecha de nacimiento" maxlength="10" autocomplete="off" />
+                                <label for="idFechaNacimiento"><i class="bi bi-calendar-date"></i> Fecha de nacimiento
+                                    (dd/mm/aaaa)</label>
+                                <div class="invalid-feedback" id="idFechaFeedback">Formato: dd/mm/aaaa &nbsp;Ej:
+                                    25/12/2001</div>
+                                <div class="valid-feedback">Fecha válida</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idCorreo" placeholder="Correo electrónico"
+                                    autocomplete="off" />
+                                <label for="idCorreo"><i class="bi bi-envelope"></i> Correo electrónico</label>
+                                <div class="invalid-feedback">Ej: usuario@dominio.com</div>
+                                <div class="valid-feedback">Correo válido</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idEdad" placeholder="Edad" maxlength="3"
+                                    inputmode="numeric" autocomplete="off" />
+                                <label for="idEdad"><i class="bi bi-123"></i> Edad</label>
+                                <div class="invalid-feedback">Solo números (1 a 3 dígitos)</div>
+                                <div class="valid-feedback">Edad válida</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <button id="idBtnValidar" type="button" class="btn btn-success">
+                                <i class="bi bi-check2-circle"></i> Validar ficha
+                            </button>
+                            <button id="idBtnLimpiar" type="button" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Limpiar formulario
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div id="idResultado" class="mt-3"></div>
+            </div>
+
+            <div class="col-12 shadow-lg p-3 mt-5 bg-body rounded">
+                <h3>Expresiones utilizadas</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Expresión regular</th>
+                                <th>Cómo se lee</th>
+                            </tr>
+                        </thead>
+                        <tbody id="idTablaRegex"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 shadow-lg p-3 mt-5 mb-5 bg-body rounded">
+                <h3>Investigación: expresiones regulares en JavaScript</h3>
+                <div class="accordion" id="idAcordeon">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#c1">¿Qué es una expresión regular?</button>
+                        </h2>
+                        <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#idAcordeon">
+                            <div class="accordion-body">
+                                Una <strong>expresión regular</strong> (regex o RegExp) es un patrón que describe un
+                                conjunto de cadenas de texto. Sirve para <em>validar</em> formatos (carnet, DUI, correo),
+                                <em>buscar</em> coincidencias dentro de un texto y <em>reemplazar</em> partes de él. En
+                                JavaScript son objetos de tipo <code>RegExp</code> y se pueden crear de dos formas:
+                                <ul class="mt-2">
+                                    <li>Literal: <code>const re = /^[A-Z]{2}\d{3}$/;</code> (la más común)</li>
+                                    <li>Constructor: <code>const re = new RegExp("^[A-Z]{2}\\d{3}$");</code> (útil
+                                        cuando el patrón se arma dinámicamente; hay que duplicar las barras
+                                        invertidas)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#c2">Sintaxis básica</button>
+                        </h2>
+                        <div id="c2" class="accordion-collapse collapse" data-bs-parent="#idAcordeon">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Símbolo</th>
+                                                <th>Significado</th>
+                                                <th>Ejemplo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td><code>^</code> y <code>$</code></td><td>Inicio y fin de la cadena (anclas). Sin ellas, la regex acepta coincidencias parciales.</td><td><code>/^\d+$/</code> solo dígitos</td></tr>
+                                            <tr><td><code>.</code></td><td>Cualquier carácter (excepto salto de línea)</td><td><code>/a.c/</code> → "abc"</td></tr>
+                                            <tr><td><code>\d</code> / <code>\D</code></td><td>Dígito / no dígito</td><td><code>\d{3}</code> → "123"</td></tr>
+                                            <tr><td><code>\w</code> / <code>\W</code></td><td>Letra ASCII, número o _ / lo contrario</td><td><code>\w+</code> → "user_1"</td></tr>
+                                            <tr><td><code>\s</code> / <code>\S</code></td><td>Espacio en blanco / no espacio</td><td><code>\s+</code></td></tr>
+                                            <tr><td><code>[abc]</code> / <code>[^abc]</code></td><td>Uno de los caracteres / ninguno de ellos</td><td><code>[A-Za-z]</code></td></tr>
+                                            <tr><td><code>*</code> <code>+</code> <code>?</code></td><td>0 o más / 1 o más / 0 o 1</td><td><code>\d+</code></td></tr>
+                                            <tr><td><code>{n}</code> <code>{n,m}</code></td><td>Exactamente n / entre n y m repeticiones</td><td><code>\d{1,3}</code></td></tr>
+                                            <tr><td><code>( )</code> y <code>(?: )</code></td><td>Grupo con captura / grupo sin captura</td><td><code>(\d{2})-(\d{2})</code></td></tr>
+                                            <tr><td><code>|</code></td><td>Alternancia ("o")</td><td><code>/gato|perro/</code></td></tr>
+                                            <tr><td><code>\</code></td><td>Escapa un carácter especial</td><td><code>\.</code> es un punto literal</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mb-1"><strong>Banderas (flags):</strong> <code>i</code> ignora
+                                    mayúsculas/minúsculas, <code>g</code> busca todas las coincidencias, <code>m</code>
+                                    multilínea, <code>u</code> habilita Unicode (permite <code>\p{L}</code> para
+                                    cualquier letra, con tildes y ñ).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#c3">Métodos de JavaScript que las usan</button>
+                        </h2>
+                        <div id="c3" class="accordion-collapse collapse" data-bs-parent="#idAcordeon">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><code>regex.test(texto)</code> → devuelve <code>true</code> o
+                                        <code>false</code>. Es el método ideal para validar formularios (el que usamos
+                                        aquí).</li>
+                                    <li><code>regex.exec(texto)</code> → devuelve el detalle de la coincidencia (con
+                                        sus grupos) o <code>null</code>.</li>
+                                    <li><code>texto.match(regex)</code> → devuelve las coincidencias (todas si lleva
+                                        la bandera <code>g</code>) o <code>null</code>.</li>
+                                    <li><code>texto.matchAll(regex)</code> → iterador con todas las coincidencias y sus
+                                        grupos (requiere <code>g</code>).</li>
+                                    <li><code>texto.replace(regex, nuevo)</code> → reemplaza coincidencias;
+                                        <code>replaceAll</code> con <code>g</code> reemplaza todas.</li>
+                                    <li><code>texto.search(regex)</code> → posición de la primera coincidencia (o
+                                        -1).</li>
+                                    <li><code>texto.split(regex)</code> → divide el texto usando el patrón como
+                                        separador.</li>
+                                </ul>
+<pre class="bg-light p-2 rounded"><code>const re = /^[A-Za-z]{2}\d{3}$/;
+re.test("AB001");   // true
+re.test("A1001");   // false
+"25/12/2001".match(/(\d{2})\/(\d{2})\/(\d{4})/); // ["25/12/2001", "25", "12", "2001"]</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#c4">Buenas prácticas y advertencias</button>
+                        </h2>
+                        <div id="c4" class="accordion-collapse collapse" data-bs-parent="#idAcordeon">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Usar siempre <code>^</code> y <code>$</code> al validar, para que la cadena
+                                        completa cumpla el formato (si no, "xxAB001xx" pasaría).</li>
+                                    <li>Una regex valida el <strong>formato</strong>, no el <strong>sentido</strong>:
+                                        "31/02/2001" cumple el formato de fecha pero no existe. Por eso este ejemplo
+                                        añade una comprobación con <code>Date</code>.</li>
+                                    <li>No usar la bandera <code>g</code> con <code>test()</code> en validaciones
+                                        repetidas: la regex recuerda su posición (<code>lastIndex</code>) y puede dar
+                                        resultados alternados.</li>
+                                    <li>La validación en el navegador mejora la experiencia, pero no sustituye la
+                                        validación en el servidor.</li>
+                                    <li>Para correos, una regex razonable evita casos obvios; la validación definitiva
+                                        es enviar un correo de confirmación.</li>
+                                    <li>Herramientas para practicar: regex101.com, regexr.com y la documentación de
+                                        MDN ("Regular expressions").</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/validacion.js" defer></script>
+</body>
+
+</html>
