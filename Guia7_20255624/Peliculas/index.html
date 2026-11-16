@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <title>Buscador de películas</title>
+</head>
+
+<body>
+
+    <header class="cabecera-cine text-center">
+        <div class="container">
+            <h1>Buscador de películas</h1>
+        </div>
+    </header>
+
+    <main class="container my-4">
+
+        <form id="idFormBuscar" class="row g-2 justify-content-center mb-3">
+            <div class="col-12 col-md-6">
+                <input type="text" id="idBuscar" class="form-control" placeholder="Escriba un título, por ejemplo: matrix">
+            </div>
+            <div class="col-auto">
+                <button type="submit" id="idBtnBuscar" class="btn btn-warning">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+            </div>
+        </form>
+
+        <div id="idMensaje" class="text-center"></div>
+
+        <div id="idListado" class="row g-3"></div>
+
+    </main>
+
+    <div class="modal fade" id="idModalDetalle" tabindex="-1" aria-labelledby="idTituloDetalle" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="idTituloDetalle">Detalle</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="idCuerpoDetalle"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/Peliculas.js"></script>
+
+</body>
+
+</html>
